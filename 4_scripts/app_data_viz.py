@@ -4,23 +4,17 @@ import plotly.express as px
 import requests as r
 import seaborn as sns
 from sqlalchemy import create_engine
+import sqlite3 as sql
+engine = create_engine('sqlite:///banco.db', echo=True)
 
 def carregar_dados():
-    try:
-        # Conexão com o banco SQLite
-        conexao = sqlite3.connect('banco.db')
-        query = "SELECT * FROM dados"
-        df = pd.read_sql(query, conexao)
+    engine = create_engine('sqlite:///banco.db')
+    query = 'SELECT * FROM dados'
+    df = pd.read_sql(query, con=engine)
+    return df 
 
-        if df.empty:
-            st.warning("A tabela 'dados' está vazia.")
-        return df
-    except sqlite3.OperationalError as e:
-        st.error(f"Erro ao acessar o banco de dados: {e}")
-        return pd.DataFrame()
-    except Exception as e:
-        st.error(f"Erro ao carregar os dados: {e}")
-        return pd.DataFrame()
+df_lido = carregar_dados()
+
 
 #def carregar_dados():
  #   engine = create_engine('sqlite:///banco.db')
