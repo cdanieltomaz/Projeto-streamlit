@@ -73,7 +73,7 @@ st.plotly_chart(fig_hist)
 #UNIVARIADA 3
 top_municipios = df_lido['Nome_Municipio'].value_counts().head(10).reset_index()
 top_municipios.columns = ['Nome_Municipio', 'Frequência']
-fig_pie = px.pie(top_municipios, values='Frequência', names='Nome Municipio', title='Infrações por Município - Top 10',
+fig_pie = px.pie(top_municipios, values='Frequência', names='Nome_Municipio', title='Infrações por Município - Top 10',
                  color_discrete_sequence=px.colors.sequential.RdBu)
 st.plotly_chart(fig_pie)
 
