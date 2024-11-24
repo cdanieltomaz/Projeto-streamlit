@@ -91,5 +91,5 @@ st.plotly_chart(fig_scatter)
 # MULTIVARIADA 3
 top_municipios = df_lido['Nome_Municipio'].value_counts().head(10).index
 df_top_municipios = df_lido[df_lido['Nome_Municipio'].isin(top_municipios)]
-fig_box_mun = px.box(df_top_municipios, x='Nome Municipio', y='Total', title='Total de Infrações por Município')
+fig_box_mun = px.box(df_top_municipios, x='Nome_Municipio', y='Total', title='Total de Infrações por Município')
 st.plotly_chart(fig_box_mun)
